@@ -6,11 +6,41 @@ var userClickedPattern = [];
 var started = false;
 var level = 0;
 
-$(document).keypress(function () { 
+$(document).keypress(function (e) { 
     if(!started){
         $("#level-title").text("Level: "+level);
         nextSequence();
         started = true;
+    }
+    else{
+        var keypress;
+        switch(e.key){
+            case "g":
+            case "G":
+                keypress = "green";
+                break;
+            case "r":
+            case "R":
+                keypress = "red";
+                break;
+            case "y":
+            case "Y":
+                keypress = "yellow";
+                break;
+            case "b":
+            case "B":
+                keypress = "blue";
+                break;
+            default:
+                console.log(e.key);
+                return;
+        }
+        userClickedPattern.push(keypress);
+
+        playSound(keypress);
+        animatePress(keypress);
+
+        checkAnswer(userClickedPattern.length-1);
     }
 });
 

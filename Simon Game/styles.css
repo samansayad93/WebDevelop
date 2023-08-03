@@ -24,6 +24,15 @@ body {
   width: 200px;
   border: 10px solid black;
   border-radius: 20%;
+  line-height: 200px;
+  text-align: center;
+}
+
+.btn p{
+  display: inline-block;
+  line-height: normal;
+  vertical-align: middle;
+  font-size: 2.5rem;
 }
 
 .game-over {
