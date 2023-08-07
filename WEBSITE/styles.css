@@ -1,0 +1,22 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+body{
+    background-color: gray;
+    position: absolute;
+}
+
+.main{
+    width: 200px;
+    height: 200px;
+    background-color: white;
+    display: inline-block;
+}
+.main a{
+    font-size: 2rem;
+    color: black;
+    text-align: center;
+
+}
