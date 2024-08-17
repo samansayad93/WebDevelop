@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "inquirer": "^9.2.10",
+    "inquirer": "^10.1.8",
     "qr-image": "^3.2.0"
   }
 }
