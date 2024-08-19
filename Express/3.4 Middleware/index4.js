@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import { rateLimit } from "express-rate-limit";
+import { escape } from "querystring";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -23,7 +24,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 function bandNameGenerator(req, res, next){
   console.log(req.body);
-  bandname = req.body["street"] + req.body["pet"];
+  bandname = escape(req.body["street"]) + escape(req.body["pet"]);
   next();
 }
 
