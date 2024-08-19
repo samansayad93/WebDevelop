@@ -1,13 +1,17 @@
 import express from "express";
+import { rateLimit } from "express-rate-limit";
+
 const app = express();
 const port = 3000;
 
-// *********************
-// Let’s practice using Postman. Make sure your server is running with nodemon.
-// Then test the 5 different routes below with Postman. Open a separate tab for each request.
-// Check that for each route you’re getting the correct status code returned to you from your server.
-// You should not get any 404s or 500 status codes.
-// *********************
+const limiter = rateLimit({
+	windowMs: 15 * 60 * 1000, // 15 minutes
+	limit: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes).
+	standardHeaders: 'draft-7', // draft-6: `RateLimit-*` headers; draft-7: combined `RateLimit` header
+	legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
+})
+
+app.use(limiter);
 
 app.get("/", (req, res) => {
   res.send("<h1>Home Page</h1>");
