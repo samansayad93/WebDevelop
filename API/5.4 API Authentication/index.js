@@ -1,10 +1,12 @@
 import express from "express";
 import axios from "axios";
 import { rateLimit } from "express-rate-limit";
+import dotenv from "dotenv";
 
 const app = express();
 const port = 3000;
 const API_URL = "https://secrets-api.appbrewery.com/";
+dotenv.config();
 
 const limiter = rateLimit({
 	windowMs: 15 * 60 * 1000, // 15 minutes
@@ -16,10 +18,10 @@ const limiter = rateLimit({
 app.use(limiter);
 
 
-const yourUsername = "aactivehunter";
-const yourPassword = "password";
-const yourAPIKey = "33ca50d8-c211-4052-9fb3-c07499ad7fbf";
-const yourBearerToken = "f5b2758b-c003-410f-8b26-c3662190cd11";
+const yourUsername = process.env.USERNAMEE;
+const yourPassword = process.env.PASSWORD;
+const yourAPIKey = process.env.APIKEY;
+const yourBearerToken = process.env.BEARERTOKEN;
 
 app.get("/", (req, res) => {
   res.render("index.ejs", { content: "API Response." });
