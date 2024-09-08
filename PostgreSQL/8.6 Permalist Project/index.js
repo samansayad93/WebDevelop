@@ -2,16 +2,18 @@ import express from "express";
 import bodyParser from "body-parser";
 import { rateLimit } from "express-rate-limit";
 import pg from "pg";
+import dotenv from "dotenv";
 
 const app = express();
 const port = 3000;
 
+dotenv.config();
 const db = new pg.Client({
-  user: "postgres",
-  host: "localhost",
-  database: "permalist",
-  password: "2334Saman92",
-  port: 5432,
+  user: process.env.USERR,
+  host: process.env.LOCAL,
+  database: process.env.DATABASE,
+  password: process.env.PASSWORD,
+  port: process.env.PORT,
 });
 db.connect();
 
